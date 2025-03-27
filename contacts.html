@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - AURUM - Люксовые трикотажные джемперы</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="C:\Users\makov\Pictures\logo1.jpg" alt="AURUM Logo">
+                <span class="logo-text">AURUM</span>
+            </div>
+            <nav class="nav-menu">
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="menu-items">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="delivery.html">Доставка и оплата</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Контакты -->
+    <section class="contacts-page">
+        <div class="container">
+            <h1>Контакты</h1>
+            
+            <div class="contacts-info">
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="contact-text">
+                            <h3>Адрес</h3>
+                            <p>г. Москва, ул. Примерная, д. 123</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="contact-text">
+                            <h3>Телефон</h3>
+                            <p>+7 (977) 984-17-03</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="contact-text">
+                            <h3>Email</h3>
+                            <p>aurum_zakaz@bk.ru</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-telegram"></i>
+                        <div class="contact-text">
+                            <h3>Telegram</h3>
+                            <p>@aurum_zakaz</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h2>Напишите нам</h2>
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Сообщение</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Отправить</button>
+                    </form>
+                    <div id="form-success" class="form-success" style="display: none;">
+                        <p>Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="working-hours">
+                <h2>Режим работы</h2>
+                <div class="hours-grid">
+                    <div class="hours-item">
+                        <h3>Пн-Пт</h3>
+                        <p>10:00 - 20:00</p>
+                    </div>
+                    <div class="hours-item">
+                        <h3>Сб</h3>
+                        <p>11:00 - 18:00</p>
+                    </div>
+                    <div class="hours-item">
+                        <h3>Вс</h3>
+                        <p>Выходной</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="C:\Users\makov\Pictures\logo1.jpg" alt="AURUM Logo">
+                    <span>AURUM</span>
+                </div>
+                <div class="footer-info">
+                    <p>AURUM — бренд люксовых трикотажных джемперов из премиальной вискозы.</p>
+                </div>
+                <div class="footer-nav">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="catalog.html">Каталог</a></li>
+                        <li><a href="delivery.html">Доставка и оплата</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contacts">
+                    <h3>Контакты</h3>
+                    <p><i class="fab fa-telegram"></i> @aurum_zakaz</p>
+                    <p><i class="fas fa-envelope"></i> info@aurum.ru</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AURUM. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

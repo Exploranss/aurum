@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина - AURUM - Люксовые трикотажные джемперы</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="C:\Users\makov\Pictures\logo1.jpg" alt="AURUM Logo">
+                <span class="logo-text">AURUM</span>
+            </div>
+            <nav class="nav-menu">
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="menu-items">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="delivery.html">Доставка и оплата</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Корзина -->
+    <section class="cart-page">
+        <div class="container">
+            <h1>Корзина</h1>
+            
+            <div id="cart-empty" class="cart-empty">
+                <p>Ваша корзина пуста</p>
+                <a href="catalog.html" class="btn">Перейти в каталог</a>
+            </div>
+            
+            <div id="cart-items" class="cart-items" style="display: none;">
+                <!-- Товары в корзине будут добавлены через JavaScript -->
+            </div>
+            
+            <div id="cart-summary" class="cart-summary" style="display: none;">
+                <div class="total">
+                    <span>Итого:</span>
+                    <span class="total-price">0 ₽</span>
+                </div>
+                <a href="checkout.html" class="btn checkout-btn">Оформить заказ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="C:\Users\makov\Pictures\logo1.jpg" alt="AURUM Logo">
+                    <span>AURUM</span>
+                </div>
+                <div class="footer-info">
+                    <p>AURUM — бренд люксовых трикотажных джемперов из премиальной вискозы.</p>
+                </div>
+                <div class="footer-nav">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="catalog.html">Каталог</a></li>
+                        <li><a href="delivery.html">Доставка и оплата</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contacts">
+                    <h3>Контакты</h3>
+                    <p><i class="fab fa-telegram"></i> @aurum_zakaz</p>
+                    <p><i class="fas fa-envelope"></i> info@aurum.ru</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AURUM. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Оформление заказа - AURUM - Люксовые трикотажные джемперы</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <img src="C:\Users\makov\Pictures\logo1.jpg" alt="AURUM Logo">
+                <span class="logo-text">AURUM</span>
+            </div>
+            <nav class="nav-menu">
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="menu-items">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="delivery.html">Доставка и оплата</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Оформление заказа -->
+    <section class="checkout-section">
+        <div class="container">
+            <h1>Оформление заказа</h1>
+            
+            <div class="checkout-container">
+                <div class="checkout-form">
+                    <form id="order-form" action="javascript:void(0);" method="post">
+                        <div class="form-section">
+                            <h2>Контактная информация</h2>
+                            <div class="form-group">
+                                <label for="name">Имя*</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Телефон*</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email*</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h2>Адрес доставки</h2>
+                            <div class="form-group">
+                                <label for="city">Город*</label>
+                                <input type="text" id="city" name="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Адрес*</label>
+                                <input type="text" id="address" name="address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="postal">Индекс*</label>
+                                <input type="text" id="postal" name="postal" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h2>Способ доставки</h2>
+                            <div class="form-group radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="delivery-courier" name="delivery" value="courier" checked>
+                                    <label for="delivery-courier">Курьерская доставка</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="delivery-pickup" name="delivery" value="pickup">
+                                    <label for="delivery-pickup">Пункт выдачи</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="delivery-post" name="delivery" value="post">
+                                    <label for="delivery-post">Почта России</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h2>Способ оплаты</h2>
+                            <div class="form-group radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="payment-card" name="payment" value="card" checked>
+                                    <label for="payment-card">Оплата картой при получении</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="payment-cash" name="payment" value="cash">
+                                    <label for="payment-cash">Оплата наличными при получении</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-section">
+                            <h2>Комментарий к заказу</h2>
+                            <div class="form-group">
+                                <textarea id="comment" name="comment" rows="3"></textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn submit-order-btn">Оформить заказ</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="order-summary">
+                    <h2>Ваш заказ</h2>
+                    <div id="order-items" class="order-items">
+                        <!-- Здесь будут отображаться товары в заказе -->
+                    </div>
+                    <div class="order-total">
+                        <div class="total-row">
+                            <span>Товары:</span>
+                            <span class="items-price">0 ₽</span>
+                        </div>
+                        <div class="total-row">
+                            <span>Доставка:</span>
+                            <span class="delivery-price">0 ₽</span>
+                        </div>
+                        <div class="total-row total">
+                            <span>Итого:</span>
+                            <span class="total-price">0 ₽</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="C:\Users\makov\Pictures\logo1.jpg" alt="AURUM Logo">
+                    <span>AURUM</span>
+                </div>
+                <div class="footer-info">
+                    <p>AURUM — бренд люксовых трикотажных джемперов из премиальной вискозы.</p>
+                </div>
+                <div class="footer-nav">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="catalog.html">Каталог</a></li>
+                        <li><a href="delivery.html">Доставка и оплата</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contacts">
+                    <h3>Контакты</h3>
+                    <p><i class="fab fa-telegram"></i> @aurum_zakaz</p>
+                    <p><i class="fas fa-envelope"></i> aurum_zakaz@bk.ru</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 AURUM. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
