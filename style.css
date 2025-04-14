@@ -968,5 +968,24 @@ h1, h2, h3, h4, h5, h6 {
     .hero h1 {
         font-size: 2rem;
     }
+@media (max-width: 400px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .feature-item {
+        padding: 15px;
+    }
+    
+    /* Make text smaller on small screens */
+    .feature-item h3 {
+        font-size: 1rem;
+    }
+    
+    .feature-item p {
+        font-size: 0.9rem;
+    }
+}
 }
     
