@@ -42,7 +42,16 @@
             <div class="checkout-container">
                 <div class="checkout-form">
                     <!-- Обновленная форма для Formspree -->
-                    <form id="order-form" action="https://formspree.io/f/mqapnrgw" method="post">
+                    <form id="order-form">
+    <!-- Все остальные поля формы остаются как есть, включая скрытое поле -->
+                        <input type="hidden" name="order_details" id="order-details-input">
+    <!-- ... остальные поля ... -->
+                        <div class="form-actions">
+                            <button type="submit" class="btn submit-order-btn">Оформить заказ</button>
+        <!-- Можно добавить элемент для отображения статуса отправки -->
+                            <p id="form-status" style="margin-top: 15px;"></p>
+                        </div>
+                    </form>
                         <div class="form-section">
                             <h2>Контактная информация</h2>
                             <div class="form-group">
