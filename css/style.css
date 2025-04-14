@@ -963,7 +963,23 @@ h1, h2, h3, h4, h5, h6 {
         margin-top: 30px;
     }
 }
+.product-image {
+    display: block;
+    text-decoration: none;
+    height: 300px; /* Сохраняем исходную высоту */
+    overflow: hidden; /* Сохраняем исходное свойство */
+}
 
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-image:hover img {
+    transform: scale(1.05);
+}
 @media (max-width: 576px) {
     .hero h1 {
         font-size: 2rem;
