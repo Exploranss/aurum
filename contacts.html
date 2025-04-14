@@ -4,27 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Контакты - AURUM - Люксовые трикотажные джемперы</title>
+    <!-- Основные шрифты и иконки -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Подключаем ОСНОВНОЙ файл стилей -->
     <link rel="stylesheet" href="css/style.css">
-    <!-- Add specific styles for contacts page if needed, or put them in style.css -->
+
+    <!-- Стили ИМЕННО для страницы контактов (внутри <head>) -->
     <style>
-        /* Specific styles for the contacts page - can be moved to style.css */
+        /* === Начало: Стили специально для страницы контактов === */
         .contacts-page {
-            padding: 60px 0; /* Consistent padding */
+            padding: 60px 0;
         }
 
         .contacts-page h1 {
             text-align: center;
             margin-bottom: 50px;
-            font-size: 2rem; /* Slightly larger title */
+            font-size: 2rem;
         }
 
         .contacts-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Two equal columns */
+            grid-template-columns: 1fr 1fr; /* Два равных столбца */
             gap: 40px;
-            align-items: start; /* Align items to the top */
+            align-items: start; /* Выравнивание по верху */
         }
 
         .contact-info-block {
@@ -32,6 +35,7 @@
             padding: 30px;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
+            height: 100%; /* Выравнивание высоты блоков в гриде */
         }
 
         .contact-info-block h2 {
@@ -51,10 +55,10 @@
         .contact-info-item i {
             font-size: 1.4rem;
             color: var(--secondary-color);
-            width: 40px; /* Fixed width for alignment */
+            width: 40px; /* Фиксированная ширина для иконок */
             text-align: center;
             margin-right: 15px;
-            flex-shrink: 0; /* Prevent icon from shrinking */
+            flex-shrink: 0; /* Иконка не будет сжиматься */
         }
 
         .contact-info-text h3 {
@@ -88,25 +92,26 @@
         .working-hours-info p {
             margin-bottom: 8px;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; /* Время справа */
         }
         .working-hours-info p strong {
              margin-right: 10px;
         }
 
-
         .contact-map-form {
-            /* Styles for the right column (map + form) */
+            display: flex;
+            flex-direction: column; /* Карта над формой */
+            gap: 30px; /* Отступ между картой и формой */
         }
 
         .map-container {
             position: relative;
             overflow: hidden;
-            padding-bottom: 60%; /* Aspect ratio (adjust as needed) */
-            height: 0;
+            width: 100%;
+            padding-bottom: 75%; /* Соотношение сторон карты (высота = 75% от ширины). Можно изменить */
+            height: 0; /* Необходим для padding-bottom трюка */
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
-            margin-bottom: 30px;
         }
 
         .map-container iframe {
@@ -118,43 +123,57 @@
             border: 0;
         }
 
-        .contact-form {
+        .contact-form-block { /* Блок с формой */
             background-color: var(--light-color);
             padding: 30px;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
         }
 
-        .contact-form h2 {
+        .contact-form-block h2 {
             text-align: center;
             margin-bottom: 25px;
             font-size: 1.5rem;
         }
 
-        /* Form group styles from your existing style.css should apply */
-        /* Ensure button has good visibility */
-        .contact-form .btn {
+        /* Стили для группы полей формы (form-group) должны быть в основном style.css */
+        /* Стили для кнопки отправки */
+        .contact-form-block .btn {
             width: 100%;
-            padding: 15px; /* Make button larger */
+            padding: 15px;
             font-size: 1rem;
             margin-top: 10px;
+            background-color: var(--secondary-color); /* Убедимся, что стиль применяется */
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
         }
+         .contact-form-block .btn:hover {
+             background-color: #7d5429; /* Цвет при наведении из переменных */
+         }
 
-        .form-success { /* Style for the success message */
+        /* Стили для сообщения об успехе (не используется с Formspree по умолчанию) */
+        .form-success {
             margin-top: 20px;
             padding: 15px;
-            background-color: #d4edda; /* Light green */
-            color: #155724; /* Dark green */
+            background-color: #d4edda;
+            color: #155724;
             border: 1px solid #c3e6cb;
             border-radius: var(--border-radius);
             text-align: center;
+            display: none; /* По умолчанию скрыто */
         }
 
-        /* Responsive Adjustments */
+        /* === Адаптивность для страницы контактов === */
         @media (max-width: 992px) {
             .contacts-grid {
-                grid-template-columns: 1fr; /* Stack columns */
+                grid-template-columns: 1fr; /* Один столбец на планшетах и моб. */
             }
+             .contact-info-block {
+                 height: auto; /* Сброс высоты */
+             }
         }
 
         @media (max-width: 768px) {
@@ -162,16 +181,22 @@
                 font-size: 1.8rem;
                 margin-bottom: 40px;
             }
-            .contact-info-block, .contact-form {
-                padding: 20px;
+            .contact-info-block, .contact-form-block {
+                padding: 20px; /* Меньше отступы на маленьких экранах */
             }
-            .contact-info-block h2, .contact-form h2 {
+            .contact-info-block h2, .contact-form-block h2 {
                 font-size: 1.3rem;
             }
              .map-container {
-                padding-bottom: 75%; /* Adjust aspect ratio for smaller screens */
+                padding-bottom: 90%; /* Увеличить высоту карты */
+            }
+            /* Кнопка может быть слишком большой на очень маленьких экранах */
+            .contact-form-block .btn {
+                padding: 12px;
+                font-size: 0.9rem;
             }
         }
+        /* === Конец: Стили специально для страницы контактов === */
     </style>
 </head>
 <body>
@@ -179,8 +204,10 @@
     <header class="header">
         <div class="container header-content">
             <div class="logo">
-                <!-- IMPORTANT: Use relative paths for images -->
-                <img src="images/logo1.jpg" alt="AURUM Logo"> <!-- Assuming logo is in an 'images' folder -->
+                <!-- УБЕДИТЕСЬ, ЧТО ПУТЬ К ЛОГОТИПУ ПРАВИЛЬНЫЙ! -->
+                <!-- Пример: если лого в папке 'images': -->
+                <img src="images/logo1.jpg" alt="AURUM Logo">
+                <!-- Пример: если лого в той же папке, что и html: <img src="logo1.jpg" alt="AURUM Logo"> -->
                 <span class="logo-text">AURUM</span>
             </div>
             <nav class="nav-menu">
@@ -195,19 +222,19 @@
                 </ul>
                 <a href="cart.html" class="cart-icon">
                     <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span> <!-- JS should update this -->
+                    <span class="cart-count">0</span> <!-- JS обновляет это число -->
                 </a>
             </nav>
         </div>
     </header>
 
-    <!-- Контакты -->
+    <!-- Секция Контакты -->
     <section class="contacts-page">
         <div class="container">
             <h1>Свяжитесь с нами</h1>
 
             <div class="contacts-grid">
-                <!-- Left Column: Info -->
+                <!-- Левая колонка: Информация -->
                 <div class="contact-info-block">
                     <h2>Контактная информация</h2>
 
@@ -216,7 +243,7 @@
                         <div class="contact-info-text">
                             <h3>Адрес</h3>
                             <p>г. Москва, ул. Княжнина, 2</p>
-                             <p><small>(Пожалуйста, согласуйте визит заранее)</small></p>
+                            <p><small>(Самовывоз или визит по предварительной договоренности)</small></p>
                         </div>
                     </div>
 
@@ -237,7 +264,7 @@
                     </div>
 
                     <div class="contact-info-item">
-                        <i class="fab fa-telegram-plane"></i> <!-- Using plane icon -->
+                        <i class="fab fa-telegram-plane"></i>
                         <div class="contact-info-text">
                             <h3>Telegram</h3>
                             <p><a href="https://t.me/aurum_zakaz" target="_blank" rel="noopener noreferrer">@aurum_zakaz</a></p>
@@ -245,42 +272,27 @@
                     </div>
 
                      <div class="working-hours-info">
-                        <h3>Режим работы (онлайн)</h3>
+                        <h3>Режим работы (онлайн поддержка)</h3>
                          <p><strong>Пн-Пт:</strong> <span>10:00 - 20:00</span></p>
                          <p><strong>Сб:</strong> <span>11:00 - 18:00</span></p>
                          <p><strong>Вс:</strong> <span>Выходной</span></p>
                     </div>
                 </div>
 
-                <!-- Right Column: Map and Form -->
+                <!-- Правая колонка: Карта и Форма -->
                 <div class="contact-map-form">
+                    <!-- Карта -->
                     <div class="map-container">
-                        <!--
-                           ЗАМЕНИТЕ ЭТО НА ВАШ КОД КАРТЫ:
-                           1. Перейдите в Google Maps или Yandex Maps.
-                           2. Найдите нужный адрес.
-                           3. Нажмите "Поделиться" или "Share".
-                           4. Выберите "Встраивание карт" или "Embed a map".
-                           5. Скопируйте предложенный HTML-код (он начнется с <iframe>).
-                           6. Вставьте этот код сюда, заменив этот комментарий и iframe ниже.
-                        -->
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.883119559249!2d37.615565!3d55.759853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a4f2f49f8a9%3A0x6b5d6e0c1a6df1e!2sMoscow%2C%20Russia!5e0!3m2!1sen!2sus!4v1678886400000!5m2!1sen!2sus"
-                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A8d7e4f0a6d70179f6f830b54573567c33622717f3f260353389f4fd7f3c2b898&source=constructor" width="100%" height="100%" frameborder="0"></iframe>
                     </div>
 
-                    <div class="contact-form">
+                    <!-- Форма обратной связи -->
+                    <div class="contact-form-block">
                         <h2>Напишите нам</h2>
-                        <!--
-                            ЗАМЕНИТЕ ACTION URL НА ВАШ URL ОТ FORMSPREE
-                            1. Зарегистрируйтесь на formspree.io
-                            2. Создайте новую форму, указав ваш email.
-                            3. Скопируйте предоставленный endpoint URL.
-                            4. Вставьте его в атрибут 'action' ниже.
-                        -->
-                        <form id="contact-form" action="https://formspree.io/f/YOUR_UNIQUE_FORM_ID" method="POST">
+                        <!-- Форма отправляет данные на ваш URL Formspree -->
+                        <form id="contact-form" action="https://formspree.io/f/mqapnrgw" method="POST">
                             <div class="form-group">
+                                <!-- Стили для form-group должны быть в css/style.css -->
                                 <label for="name">Ваше Имя <span style="color:red">*</span></label>
                                 <input type="text" id="name" name="name" required>
                             </div>
@@ -296,19 +308,13 @@
                                 <label for="message">Ваше сообщение <span style="color:red">*</span></label>
                                 <textarea id="message" name="message" rows="5" required></textarea>
                             </div>
-                             <!-- Optional: Add a hidden field for subject -->
+                             <!-- Дополнительные скрытые поля Formspree -->
                              <input type="hidden" name="_subject" value="Новое сообщение с сайта AURUM!">
-                             <!-- Optional: Honeypot for spam -->
-                             <input type="text" name="_gotcha" style="display:none">
-                             <!-- Optional: Set reply-to -->
-                             <input type="hidden" name="_replyto" value="%email%"> <!-- Uses the submitted email -->
+                             <input type="text" name="_gotcha" style="display:none"> <!-- Ловушка для спам-ботов -->
+                             <input type="hidden" name="_replyto" value="%email%"> <!-- Устанавливает поле "Ответить" в письме -->
 
                             <button type="submit" class="btn">Отправить сообщение</button>
                         </form>
-                        <!-- Success Message Area (Optional with Formspree, as it redirects) -->
-                        <!-- <div id="form-success" class="form-success" style="display: none;">
-                            <p>Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.</p>
-                        </div> -->
                     </div>
                 </div>
             </div>
@@ -319,9 +325,10 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section footer-about">
+                <!-- Структура футера как в предыдущих примерах -->
+                 <div class="footer-section footer-about">
                     <div class="footer-logo">
-                         <img src="images/logo1.jpg" alt="AURUM Logo"> <!-- Use relative path -->
+                         <img src="images/logo1.jpg" alt="AURUM Logo"> <!-- Убедитесь, что путь правильный -->
                         <span>AURUM</span>
                     </div>
                      <p>AURUM — бренд люксовых трикотажных джемперов из премиальной вискозы.</p>
@@ -343,21 +350,27 @@
                 </div>
                  <div class="footer-section footer-social">
                      <h3>Мы в соцсетях</h3>
-                     <!-- Add links to your social media -->
-                     <a href="#" target="_blank"><i class="fab fa-vk"></i></a>
-                     <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                     <!-- Add others as needed -->
+                     <!-- Добавьте ссылки на ваши соцсети -->
+                     <a href="#" target="_blank" aria-label="VK"><i class="fab fa-vk"></i></a>
+                     <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                  </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2024 AURUM. Все права защищены.</p> <!-- Updated year -->
+                <p>© 2024 AURUM. Все права защищены.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Keep your existing script.js link -->
+    <!-- Подключаем основной скрипт -->
     <script src="js/script.js"></script>
-    <!-- No changes needed in script.js for Formspree basic usage -->
+
+    <!--
+        ВАЖНОЕ НАПОМИНАНИЕ:
+        Убедитесь, что в вашем файле js/script.js НЕТ кода,
+        который обрабатывает отправку формы с id="contact-form"
+        с помощью e.preventDefault(). Этот код нужно удалить или
+        закомментировать, чтобы форма отправлялась на Formspree.
+    -->
 
 </body>
 </html>
