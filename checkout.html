@@ -28,7 +28,7 @@
                 </ul>
                 <a href="cart.html" class="cart-icon">
                     <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span>
+                    <span class="cart-count">0</span> <!-- Счетчик обновится через JS -->
                 </a>
             </nav>
         </div>
@@ -38,91 +38,105 @@
     <section class="checkout-section">
         <div class="container">
             <h1>Оформление заказа</h1>
-            
+
             <div class="checkout-container">
                 <div class="checkout-form">
-                    <form id="order-form" action="javascript:void(0);" method="post">
+                    <!-- Обновленная форма для Formspree -->
+                    <form id="order-form" action="https://formspree.io/f/mqapnrgw" method="post">
                         <div class="form-section">
                             <h2>Контактная информация</h2>
                             <div class="form-group">
                                 <label for="name">Имя*</label>
+                                <!-- Добавлен required -->
                                 <input type="text" id="name" name="name" required>
                             </div>
                             <div class="form-group">
                                 <label for="phone">Телефон*</label>
-                                <input type="tel" id="phone" name="phone" required>
+                                <!-- Добавлен required -->
+                                <input type="tel" id="phone" name="phone" required pattern="^\+?[0-9\s\-\(\)]+$" title="Введите корректный номер телефона">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email*</label>
+                                <!-- Добавлен required -->
                                 <input type="email" id="email" name="email" required>
                             </div>
                         </div>
-                        
+
                         <div class="form-section">
                             <h2>Адрес доставки</h2>
                             <div class="form-group">
                                 <label for="city">Город*</label>
+                                <!-- Добавлен required -->
                                 <input type="text" id="city" name="city" required>
                             </div>
                             <div class="form-group">
                                 <label for="address">Адрес*</label>
+                                <!-- Добавлен required -->
                                 <input type="text" id="address" name="address" required>
                             </div>
                             <div class="form-group">
-                                <label for="postal">Индекс*</label>
-                                <input type="text" id="postal" name="postal" required>
+                                <label for="postal">Индекс</label> <!-- Сделал необязательным, но можно вернуть required -->
+                                <input type="text" id="postal" name="postal" pattern="[0-9]{5,6}" title="Введите 5 или 6 цифр индекса">
                             </div>
                         </div>
-                        
+
                         <div class="form-section">
                             <h2>Способ доставки</h2>
                             <div class="form-group radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="delivery-courier" name="delivery" value="courier" checked>
-                                    <label for="delivery-courier">Курьерская доставка</label>
+                                    <input type="radio" id="delivery-courier" name="delivery" value="Курьерская доставка" checked>
+                                    <label for="delivery-courier">Курьерская доставка (300 ₽)</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="delivery-pickup" name="delivery" value="pickup">
-                                    <label for="delivery-pickup">Пункт выдачи</label>
+                                    <input type="radio" id="delivery-pickup" name="delivery" value="Пункт выдачи (Самовывоз)">
+                                    <label for="delivery-pickup">Пункт выдачи (Бесплатно)</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="delivery-post" name="delivery" value="post">
-                                    <label for="delivery-post">Почта России</label>
+                                    <input type="radio" id="delivery-post" name="delivery" value="Почта России">
+                                    <label for="delivery-post">Почта России (350 ₽)</label>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="form-section">
                             <h2>Способ оплаты</h2>
                             <div class="form-group radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="payment-card" name="payment" value="card" checked>
+                                    <input type="radio" id="payment-card" name="payment" value="Картой при получении" checked>
                                     <label for="payment-card">Оплата картой при получении</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="payment-cash" name="payment" value="cash">
+                                    <input type="radio" id="payment-cash" name="payment" value="Наличными при получении">
                                     <label for="payment-cash">Оплата наличными при получении</label>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="form-section">
                             <h2>Комментарий к заказу</h2>
                             <div class="form-group">
                                 <textarea id="comment" name="comment" rows="3"></textarea>
                             </div>
                         </div>
-                        
+
+                        <!-- Скрытое поле для деталей заказа -->
+                        <input type="hidden" name="order_details" id="order-details-input">
+
+                        <!-- Специальные поля Formspree для редиректа и форматирования email (опционально) -->
+                        <!-- <input type="hidden" name="_next" value="http://yourwebsite.com/thank_you.html"> --> <!-- URL для редиректа после отправки -->
+                        <!-- <input type="hidden" name="_subject" value="Новый заказ с сайта AURUM!"> --> <!-- Тема письма -->
+
                         <div class="form-actions">
                             <button type="submit" class="btn submit-order-btn">Оформить заказ</button>
                         </div>
                     </form>
                 </div>
-                
-                <div class="order-summary">
+
+                <aside class="order-summary">
                     <h2>Ваш заказ</h2>
                     <div id="order-items" class="order-items">
-                        <!-- Здесь будут отображаться товары в заказе -->
+                        <!-- Сюда будут добавлены товары из корзины с помощью JavaScript -->
+                        <p>Загрузка корзины...</p>
                     </div>
                     <div class="order-total">
                         <div class="total-row">
@@ -138,7 +152,7 @@
                             <span class="total-price">0 ₽</span>
                         </div>
                     </div>
-                </div>
+                </aside>
             </div>
         </div>
     </section>
@@ -148,7 +162,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="Pictures\logo1.jpg" alt="AURUM Logo">
+                     <img src="Pictures\logo1.jpg" alt="AURUM Logo">
                     <span>AURUM</span>
                 </div>
                 <div class="footer-info">
@@ -166,15 +180,17 @@
                 <div class="footer-contacts">
                     <h3>Контакты</h3>
                     <p><i class="fab fa-telegram"></i> @aurum_zakaz</p>
+                    <!-- Почта для отображения, не для отправки формы -->
                     <p><i class="fas fa-envelope"></i> aurum_zakaz@bk.ru</p>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 AURUM. Все права защищены.</p>
+                <p>© 2025 AURUM. Все права защищены.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Подключаем JavaScript -->
     <script src="js/script.js"></script>
 </body>
 </html>
