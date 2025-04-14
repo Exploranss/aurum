@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спасибо за ваш заказ! - AURUM</title>
+
+    <!-- Мета-тег для автоматического перенаправления на главную страницу через 15 секунд -->
+    <!-- Можешь изменить время (content="15") или убрать тег, если перенаправление не нужно -->
+    <meta http-equiv="refresh" content="15;url=index.html">
+
+    <!-- Стили -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css"> <!-- Убедись, что путь к стилям правильный -->
+
+    <!-- Дополнительные стили для центрирования контента на этой странице -->
+    <style>
+        .thank-you-section {
+            padding: 80px 0; /* Увеличим отступы */
+            text-align: center;
+            min-height: calc(100vh - 150px - 200px); /* Примерная высота экрана минус шапка и подвал */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .thank-you-content {
+            background-color: var(--light-color);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            max-width: 600px;
+            margin: 0 auto; /* Центрирование блока */
+        }
+        .thank-you-content h1 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+        }
+        .thank-you-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        .thank-you-content .icon {
+            font-size: 3.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            display: block;
+        }
+        .thank-you-content .btn {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка сайта (Скопируй из другого файла, например index.html или checkout.html) -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <!-- ЗАМЕНИ НА ПРАВИЛЬНЫЙ ПУТЬ К ЛОГО -->
+                <img src="images/logo1.jpg" alt="AURUM Logo">
+                <span class="logo-text">AURUM</span>
+            </div>
+            <nav class="nav-menu">
+                <div class="menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul class="menu-items">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="delivery.html">Доставка и оплата</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+                <a href="cart.html" class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <!-- Счетчик будет обнулен скриптом ниже -->
+                    <span class="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Секция "Спасибо" -->
+    <section class="thank-you-section">
+        <div class="container">
+            <div class="thank-you-content">
+                <i class="fas fa-check-circle icon"></i> <!-- Иконка успеха -->
+                <h1>Спасибо за ваш заказ!</h1>
+                <p>Ваш заказ успешно оформлен и отправлен нам.</p>
+                <p>Мы свяжемся с вами в ближайшее время по указанным контактным данным для подтверждения деталей и согласования доставки.</p>
+                <p>Вы будете автоматически перенаправлены на главную страницу через 15 секунд.</p>
+                <a href="index.html" class="btn">Вернуться на главную немедленно</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер (Скопируй из другого файла) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                     <!-- ЗАМЕНИ НА ПРАВИЛЬНЫЙ ПУТЬ К ЛОГО -->
+                    <img src="images/logo1.jpg" alt="AURUM Logo">
+                    <span>AURUM</span>
+                </div>
+                <div class="footer-info">
+                    <p>AURUM — бренд люксовых трикотажных джемперов из премиальной вискозы.</p>
+                </div>
+                <div class="footer-nav">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="catalog.html">Каталог</a></li>
+                        <li><a href="delivery.html">Доставка и оплата</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contacts">
+                    <h3>Контакты</h3>
+                    <p><i class="fab fa-telegram"></i> @aurum_zakaz</p>
+                    <p><i class="fas fa-envelope"></i> aurum_zakaz@bk.ru</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 AURUM. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ВАЖНО: Скрипт для очистки корзины -->
+    <script>
+        try {
+            // Очищаем корзину в localStorage
+            localStorage.removeItem('cart');
+            console.log('Корзина очищена на странице благодарности.');
+
+            // Обновляем счетчик в шапке на этой странице
+            const cartCountEl = document.querySelector('.cart-count');
+            if (cartCountEl) {
+                cartCountEl.textContent = '0';
+                cartCountEl.style.display = 'none'; // Скрываем кружок счетчика
+            }
+        } catch (e) {
+            console.error("Ошибка при очистке корзины или обновлении счетчика:", e);
+        }
+    </script>
+
+    <!-- Подключаем основной скрипт сайта (для работы меню и т.д., если шапка/подвал динамические) -->
+    <!-- Убедись, что путь к скрипту правильный -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>
