@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Оформление заказа - AURUM - Люксовые трикотажные джемперы</title>
+    <title>Оформление заказа - AURUM</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Убедись, что путь к style.css правильный -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -13,7 +14,8 @@
     <header class="header">
         <div class="container header-content">
             <div class="logo">
-                <img src="Pictures\logo1.jpg" alt="AURUM Logo">
+                <!-- ВАЖНО: Используй ОТНОСИТЕЛЬНЫЙ путь к логотипу -->
+                <img src="images/logo1.jpg" alt="AURUM Logo" onerror="this.style.display='none'"> <!-- Добавил onerror на случай ошибки пути -->
                 <span class="logo-text">AURUM</span>
             </div>
             <nav class="nav-menu">
@@ -41,32 +43,20 @@
 
             <div class="checkout-container">
                 <div class="checkout-form">
-                    <!-- Обновленная форма для Formspree -->
+                    <!-- Форма БЕЗ action и method, отправка через JS -->
                     <form id="order-form">
-    <!-- Все остальные поля формы остаются как есть, включая скрытое поле -->
-                        <input type="hidden" name="order_details" id="order-details-input">
-    <!-- ... остальные поля ... -->
-                        <div class="form-actions">
-                            <button type="submit" class="btn submit-order-btn">Оформить заказ</button>
-        <!-- Можно добавить элемент для отображения статуса отправки -->
-                            <p id="form-status" style="margin-top: 15px;"></p>
-                        </div>
-                    </form>
                         <div class="form-section">
                             <h2>Контактная информация</h2>
                             <div class="form-group">
                                 <label for="name">Имя*</label>
-                                <!-- Добавлен required -->
                                 <input type="text" id="name" name="name" required>
                             </div>
                             <div class="form-group">
                                 <label for="phone">Телефон*</label>
-                                <!-- Добавлен required -->
                                 <input type="tel" id="phone" name="phone" required pattern="^\+?[0-9\s\-\(\)]+$" title="Введите корректный номер телефона">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email*</label>
-                                <!-- Добавлен required -->
                                 <input type="email" id="email" name="email" required>
                             </div>
                         </div>
@@ -75,16 +65,14 @@
                             <h2>Адрес доставки</h2>
                             <div class="form-group">
                                 <label for="city">Город*</label>
-                                <!-- Добавлен required -->
                                 <input type="text" id="city" name="city" required>
                             </div>
                             <div class="form-group">
-                                <label for="address">Адрес*</label>
-                                <!-- Добавлен required -->
+                                <label for="address">Адрес* (Улица, дом, квартира)</label>
                                 <input type="text" id="address" name="address" required>
                             </div>
                             <div class="form-group">
-                                <label for="postal">Индекс</label> <!-- Сделал необязательным, но можно вернуть required -->
+                                <label for="postal">Индекс</label>
                                 <input type="text" id="postal" name="postal" pattern="[0-9]{5,6}" title="Введите 5 или 6 цифр индекса">
                             </div>
                         </div>
@@ -93,15 +81,15 @@
                             <h2>Способ доставки</h2>
                             <div class="form-group radio-group">
                                 <div class="radio-option">
-                                    <input type="radio" id="delivery-courier" name="delivery" value="Курьерская доставка" checked>
+                                    <input type="radio" id="delivery-courier" name="delivery" value="Курьерская доставка" checked data-price="300">
                                     <label for="delivery-courier">Курьерская доставка (300 ₽)</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="delivery-pickup" name="delivery" value="Пункт выдачи (Самовывоз)">
+                                    <input type="radio" id="delivery-pickup" name="delivery" value="Пункт выдачи (Самовывоз)" data-price="0">
                                     <label for="delivery-pickup">Пункт выдачи (Бесплатно)</label>
                                 </div>
                                 <div class="radio-option">
-                                    <input type="radio" id="delivery-post" name="delivery" value="Почта России">
+                                    <input type="radio" id="delivery-post" name="delivery" value="Почта России" data-price="350">
                                     <label for="delivery-post">Почта России (350 ₽)</label>
                                 </div>
                             </div>
@@ -124,19 +112,17 @@
                         <div class="form-section">
                             <h2>Комментарий к заказу</h2>
                             <div class="form-group">
-                                <textarea id="comment" name="comment" rows="3"></textarea>
+                                <textarea id="comment" name="comment" rows="3" placeholder="Ваши пожелания к заказу"></textarea>
                             </div>
                         </div>
 
-                        <!-- Скрытое поле для деталей заказа -->
+                        <!-- Скрытое поле для деталей заказа - ЗАПОЛНЯЕТСЯ ЧЕРЕЗ JS -->
                         <input type="hidden" name="order_details" id="order-details-input">
-
-                        <!-- Специальные поля Formspree для редиректа и форматирования email (опционально) -->
-                        <!-- <input type="hidden" name="_next" value="http://yourwebsite.com/thank_you.html"> --> <!-- URL для редиректа после отправки -->
-                        <!-- <input type="hidden" name="_subject" value="Новый заказ с сайта AURUM!"> --> <!-- Тема письма -->
 
                         <div class="form-actions">
                             <button type="submit" class="btn submit-order-btn">Оформить заказ</button>
+                            <!-- Элемент для отображения статуса отправки формы -->
+                            <p id="form-status" style="margin-top: 15px; font-weight: 500; min-height: 1.2em;"></p>
                         </div>
                     </form>
                 </div>
@@ -171,7 +157,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                     <img src="Pictures\logo1.jpg" alt="AURUM Logo">
+                     <!-- ВАЖНО: Используй ОТНОСИТЕЛЬНЫЙ путь к логотипу -->
+                     <img src="images/logo1.jpg" alt="AURUM Logo" onerror="this.style.display='none'">
                     <span>AURUM</span>
                 </div>
                 <div class="footer-info">
@@ -189,7 +176,6 @@
                 <div class="footer-contacts">
                     <h3>Контакты</h3>
                     <p><i class="fab fa-telegram"></i> @aurum_zakaz</p>
-                    <!-- Почта для отображения, не для отправки формы -->
                     <p><i class="fas fa-envelope"></i> aurum_zakaz@bk.ru</p>
                 </div>
             </div>
@@ -200,6 +186,7 @@
     </footer>
 
     <!-- Подключаем JavaScript -->
+    <!-- Убедись, что путь к script.js правильный -->
     <script src="js/script.js"></script>
 </body>
 </html>
