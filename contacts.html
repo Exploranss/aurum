@@ -7,13 +7,180 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <!-- Add specific styles for contacts page if needed, or put them in style.css -->
+    <style>
+        /* Specific styles for the contacts page - can be moved to style.css */
+        .contacts-page {
+            padding: 60px 0; /* Consistent padding */
+        }
+
+        .contacts-page h1 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2rem; /* Slightly larger title */
+        }
+
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two equal columns */
+            gap: 40px;
+            align-items: start; /* Align items to the top */
+        }
+
+        .contact-info-block {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .contact-info-block h2 {
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .contact-info-item i {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            width: 40px; /* Fixed width for alignment */
+            text-align: center;
+            margin-right: 15px;
+            flex-shrink: 0; /* Prevent icon from shrinking */
+        }
+
+        .contact-info-text h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .contact-info-text p {
+            margin: 0;
+            line-height: 1.5;
+        }
+        .contact-info-text a {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        .contact-info-text a:hover {
+            color: var(--secondary-color);
+        }
+
+        .working-hours-info {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+
+        .working-hours-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .working-hours-info p {
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .working-hours-info p strong {
+             margin-right: 10px;
+        }
+
+
+        .contact-map-form {
+            /* Styles for the right column (map + form) */
+        }
+
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 60%; /* Aspect ratio (adjust as needed) */
+            height: 0;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 30px;
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .contact-form {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .contact-form h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+
+        /* Form group styles from your existing style.css should apply */
+        /* Ensure button has good visibility */
+        .contact-form .btn {
+            width: 100%;
+            padding: 15px; /* Make button larger */
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        .form-success { /* Style for the success message */
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #d4edda; /* Light green */
+            color: #155724; /* Dark green */
+            border: 1px solid #c3e6cb;
+            border-radius: var(--border-radius);
+            text-align: center;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .contacts-grid {
+                grid-template-columns: 1fr; /* Stack columns */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contacts-page h1 {
+                font-size: 1.8rem;
+                margin-bottom: 40px;
+            }
+            .contact-info-block, .contact-form {
+                padding: 20px;
+            }
+            .contact-info-block h2, .contact-form h2 {
+                font-size: 1.3rem;
+            }
+             .map-container {
+                padding-bottom: 75%; /* Adjust aspect ratio for smaller screens */
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Шапка сайта -->
     <header class="header">
         <div class="container header-content">
             <div class="logo">
-                <img src="C:\Users\makov\Pictures\logo1.jpg" alt="AURUM Logo">
+                <!-- IMPORTANT: Use relative paths for images -->
+                <img src="images/logo1.jpg" alt="AURUM Logo"> <!-- Assuming logo is in an 'images' folder -->
                 <span class="logo-text">AURUM</span>
             </div>
             <nav class="nav-menu">
@@ -28,7 +195,7 @@
                 </ul>
                 <a href="cart.html" class="cart-icon">
                     <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span>
+                    <span class="cart-count">0</span> <!-- JS should update this -->
                 </a>
             </nav>
         </div>
@@ -37,81 +204,111 @@
     <!-- Контакты -->
     <section class="contacts-page">
         <div class="container">
-            <h1>Контакты</h1>
-            
-            <div class="contacts-info">
-                <div class="contact-details">
-                    <div class="contact-item">
+            <h1>Свяжитесь с нами</h1>
+
+            <div class="contacts-grid">
+                <!-- Left Column: Info -->
+                <div class="contact-info-block">
+                    <h2>Контактная информация</h2>
+
+                    <div class="contact-info-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <div class="contact-text">
+                        <div class="contact-info-text">
                             <h3>Адрес</h3>
-                            <p>г. Москва, ул. Примерная, д. 123</p>
+                            <p>г. Москва, ул. Княжнина, 2</p>
+                             <p><small>(Пожалуйста, согласуйте визит заранее)</small></p>
                         </div>
                     </div>
-                    <div class="contact-item">
+
+                    <div class="contact-info-item">
                         <i class="fas fa-phone"></i>
-                        <div class="contact-text">
+                        <div class="contact-info-text">
                             <h3>Телефон</h3>
-                            <p>+7 (977) 984-17-03</p>
+                            <p><a href="tel:+79779841703">+7 (977) 984-17-03</a></p>
                         </div>
                     </div>
-                    <div class="contact-item">
+
+                    <div class="contact-info-item">
                         <i class="fas fa-envelope"></i>
-                        <div class="contact-text">
+                        <div class="contact-info-text">
                             <h3>Email</h3>
-                            <p>aurum_zakaz@bk.ru</p>
+                            <p><a href="mailto:aurum_zakaz@bk.ru">aurum_zakaz@bk.ru</a></p>
                         </div>
                     </div>
-                    <div class="contact-item">
-                        <i class="fab fa-telegram"></i>
-                        <div class="contact-text">
+
+                    <div class="contact-info-item">
+                        <i class="fab fa-telegram-plane"></i> <!-- Using plane icon -->
+                        <div class="contact-info-text">
                             <h3>Telegram</h3>
-                            <p>@aurum_zakaz</p>
+                            <p><a href="https://t.me/aurum_zakaz" target="_blank" rel="noopener noreferrer">@aurum_zakaz</a></p>
                         </div>
+                    </div>
+
+                     <div class="working-hours-info">
+                        <h3>Режим работы (онлайн)</h3>
+                         <p><strong>Пн-Пт:</strong> <span>10:00 - 20:00</span></p>
+                         <p><strong>Сб:</strong> <span>11:00 - 18:00</span></p>
+                         <p><strong>Вс:</strong> <span>Выходной</span></p>
                     </div>
                 </div>
-                
-                <div class="contact-form">
-                    <h2>Напишите нам</h2>
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <label for="name">Имя</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Телефон</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Сообщение</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Отправить</button>
-                    </form>
-                    <div id="form-success" class="form-success" style="display: none;">
-                        <p>Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.</p>
+
+                <!-- Right Column: Map and Form -->
+                <div class="contact-map-form">
+                    <div class="map-container">
+                        <!--
+                           ЗАМЕНИТЕ ЭТО НА ВАШ КОД КАРТЫ:
+                           1. Перейдите в Google Maps или Yandex Maps.
+                           2. Найдите нужный адрес.
+                           3. Нажмите "Поделиться" или "Share".
+                           4. Выберите "Встраивание карт" или "Embed a map".
+                           5. Скопируйте предложенный HTML-код (он начнется с <iframe>).
+                           6. Вставьте этот код сюда, заменив этот комментарий и iframe ниже.
+                        -->
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2244.883119559249!2d37.615565!3d55.759853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a4f2f49f8a9%3A0x6b5d6e0c1a6df1e!2sMoscow%2C%20Russia!5e0!3m2!1sen!2sus!4v1678886400000!5m2!1sen!2sus"
+                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
-                </div>
-            </div>
-            
-            <div class="working-hours">
-                <h2>Режим работы</h2>
-                <div class="hours-grid">
-                    <div class="hours-item">
-                        <h3>Пн-Пт</h3>
-                        <p>10:00 - 20:00</p>
-                    </div>
-                    <div class="hours-item">
-                        <h3>Сб</h3>
-                        <p>11:00 - 18:00</p>
-                    </div>
-                    <div class="hours-item">
-                        <h3>Вс</h3>
-                        <p>Выходной</p>
+
+                    <div class="contact-form">
+                        <h2>Напишите нам</h2>
+                        <!--
+                            ЗАМЕНИТЕ ACTION URL НА ВАШ URL ОТ FORMSPREE
+                            1. Зарегистрируйтесь на formspree.io
+                            2. Создайте новую форму, указав ваш email.
+                            3. Скопируйте предоставленный endpoint URL.
+                            4. Вставьте его в атрибут 'action' ниже.
+                        -->
+                        <form id="contact-form" action="https://formspree.io/f/YOUR_UNIQUE_FORM_ID" method="POST">
+                            <div class="form-group">
+                                <label for="name">Ваше Имя <span style="color:red">*</span></label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Ваш Email <span style="color:red">*</span></label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Телефон (необязательно)</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Ваше сообщение <span style="color:red">*</span></label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                             <!-- Optional: Add a hidden field for subject -->
+                             <input type="hidden" name="_subject" value="Новое сообщение с сайта AURUM!">
+                             <!-- Optional: Honeypot for spam -->
+                             <input type="text" name="_gotcha" style="display:none">
+                             <!-- Optional: Set reply-to -->
+                             <input type="hidden" name="_replyto" value="%email%"> <!-- Uses the submitted email -->
+
+                            <button type="submit" class="btn">Отправить сообщение</button>
+                        </form>
+                        <!-- Success Message Area (Optional with Formspree, as it redirects) -->
+                        <!-- <div id="form-success" class="form-success" style="display: none;">
+                            <p>Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.</p>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -122,14 +319,14 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="C:\Users\makov\Pictures\logo1.jpg" alt="AURUM Logo">
-                    <span>AURUM</span>
+                <div class="footer-section footer-about">
+                    <div class="footer-logo">
+                         <img src="images/logo1.jpg" alt="AURUM Logo"> <!-- Use relative path -->
+                        <span>AURUM</span>
+                    </div>
+                     <p>AURUM — бренд люксовых трикотажных джемперов из премиальной вискозы.</p>
                 </div>
-                <div class="footer-info">
-                    <p>AURUM — бренд люксовых трикотажных джемперов из премиальной вискозы.</p>
-                </div>
-                <div class="footer-nav">
+                <div class="footer-section footer-nav">
                     <h3>Навигация</h3>
                     <ul>
                         <li><a href="index.html">Главная</a></li>
@@ -138,18 +335,29 @@
                         <li><a href="contacts.html">Контакты</a></li>
                     </ul>
                 </div>
-                <div class="footer-contacts">
+                <div class="footer-section footer-contacts">
                     <h3>Контакты</h3>
-                    <p><i class="fab fa-telegram"></i> @aurum_zakaz</p>
-                    <p><i class="fas fa-envelope"></i> info@aurum.ru</p>
+                     <p><i class="fas fa-phone"></i> <a href="tel:+79779841703">+7 (977) 984-17-03</a></p>
+                    <p><i class="fab fa-telegram"></i> <a href="https://t.me/aurum_zakaz" target="_blank">@aurum_zakaz</a></p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:aurum_zakaz@bk.ru">aurum_zakaz@bk.ru</a></p>
                 </div>
+                 <div class="footer-section footer-social">
+                     <h3>Мы в соцсетях</h3>
+                     <!-- Add links to your social media -->
+                     <a href="#" target="_blank"><i class="fab fa-vk"></i></a>
+                     <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                     <!-- Add others as needed -->
+                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 AURUM. Все права защищены.</p>
+                <p>© 2024 AURUM. Все права защищены.</p> <!-- Updated year -->
             </div>
         </div>
     </footer>
 
+    <!-- Keep your existing script.js link -->
     <script src="js/script.js"></script>
+    <!-- No changes needed in script.js for Formspree basic usage -->
+
 </body>
 </html>
