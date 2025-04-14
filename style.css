@@ -924,49 +924,63 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 768px) {
-    section {
-        padding: 40px 0;
+    /* Корректировка отступов */
+    .container {
+        padding: 0 10px;
     }
     
-    .menu-toggle {
-        display: block;
+    /* Уменьшение размера шрифта */
+    body {
+        font-size: 14px;
     }
     
+    /* Корректировка карточек товаров */
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    /* Исправление выпадающего за пределы контента */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* Улучшение меню в мобильной версии */
     .menu-items {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: var(--primary-color);
-        flex-direction: column;
-        padding: 20px;
-        display: none;
+        z-index: 1000;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
     }
     
-    .menu-items.active {
-        display: flex;
+    /* Улучшение отображения корзины */
+    .cart-item {
+        grid-template-columns: 80px 1fr;
     }
     
-    .menu-items li {
-        margin: 10px 0;
-    }
-    
-    .product-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .checkout-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .order-summary {
-        margin-top: 30px;
+    /* Улучшение отображения формы */
+    .form-group input, .form-group textarea, .form-group select {
+        font-size: 16px; /* Предотвращает автоматическое увеличение на iOS */
     }
 }
 
-@media (max-width: 576px) {
-    .hero h1 {
-        font-size: 2rem;
+@media (max-width: 480px) {
+    /* Дополнительные коррективы для очень маленьких экранов */
+    .header-content {
+        flex-wrap: wrap;
+    }
+    
+    .logo {
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+    
+    .nav-menu {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .cart-item {
+        padding: 10px;
     }
 }
-    
