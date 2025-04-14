@@ -968,5 +968,66 @@ h1, h2, h3, h4, h5, h6 {
     .hero h1 {
         font-size: 2rem;
     }
+@media (max-width: 400px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .feature-item {
+        padding: 15px;
+    }
+    
+    /* Make text smaller on small screens */
+    .feature-item h3 {
+        font-size: 1rem;
+    }
+    
+    .feature-item p {
+        font-size: 0.9rem;
+    }
 }
+@media (max-width: 400px) {
+    /* Header adjustments */
+    .logo-text {
+        font-size: 20px;
+    }
+    
+    .logo img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    /* Hero section adjustments */
+    .hero {
+        padding: 60px 0;
+    }
+    
+    .hero h1 {
+        font-size: 1.5rem;
+    }
+    
+    .hero p {
+        font-size: 1rem;
+    }
+    
+    /* Testimonial adjustments */
+    .testimonial-content {
+        padding: 20px;
+    }
+    
+    /* Button size adjustments */
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    /* Footer adjustments */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+}
+
     
